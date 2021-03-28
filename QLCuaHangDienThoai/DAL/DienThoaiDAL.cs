@@ -35,6 +35,56 @@ namespace QLCuaHangDienThoai.DAL
             return listItems;
         }
 
+        public static List<DienThoai> LayTheoLoaiDienThoai(int IdLoaiDienThoai)
+        {
+            List<DienThoai> listItems = new List<DienThoai>();
+            data = new DataTable();
+            string strQuery = "Select DT.Id, DT.Ten, DT.MoTa, SoLuong, UrlHinhAnh, Gia, IdLoaiDienThoai, LDT.Ten as LoaiDienThoai from DienThoai as DT join LoaiDienThoai as LDT on DT.IdLoaiDienThoai = LDT.Id Where LDT.Id=" + IdLoaiDienThoai.ToString();
+            data = SQLServer.LayDuLieu(strQuery);
+            foreach (DataRow item in data.Rows)
+            {
+                tmp = new DienThoai
+                {
+                    Id = (int)item["Id"],
+                    Ten = item["Ten"].ToString(),
+                    MoTa = item["MoTa"].ToString(),
+                    SoLuong = (int)item["SoLuong"],
+                    Gia = (int)item["Gia"],
+                    UrlHinhAnh = item["UrlHinhAnh"].ToString(),
+                    LoaiDienThoai = item["LoaiDienThoai"].ToString(),
+                    IdLoaiDienThoai = (int)item["IdLoaiDienThoai"]
+                };
+
+                listItems.Add(tmp);
+            }
+            return listItems;
+        }
+
+        public static List<DienThoai> LayTheoTenDienThoai(string TenDienThoai)
+        {
+            List<DienThoai> listItems = new List<DienThoai>();
+            data = new DataTable();
+            string strQuery = "Select DT.Id, DT.Ten, DT.MoTa, SoLuong, UrlHinhAnh, Gia, IdLoaiDienThoai, LDT.Ten as LoaiDienThoai from DienThoai as DT join LoaiDienThoai as LDT on DT.IdLoaiDienThoai = LDT.Id Where DT.Ten like '%" + TenDienThoai + "%'";
+            data = SQLServer.LayDuLieu(strQuery);
+            foreach (DataRow item in data.Rows)
+            {
+                tmp = new DienThoai
+                {
+                    Id = (int)item["Id"],
+                    Ten = item["Ten"].ToString(),
+                    MoTa = item["MoTa"].ToString(),
+                    SoLuong = (int)item["SoLuong"],
+                    Gia = (int)item["Gia"],
+                    UrlHinhAnh = item["UrlHinhAnh"].ToString(),
+                    LoaiDienThoai = item["LoaiDienThoai"].ToString(),
+                    IdLoaiDienThoai = (int)item["IdLoaiDienThoai"]
+                };
+
+                listItems.Add(tmp);
+            }
+            return listItems;
+        }
+
         public static DienThoai LayTheoId(string Id)
         {
             data = new DataTable();

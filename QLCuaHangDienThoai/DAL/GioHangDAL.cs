@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using QLCuaHangDienThoai.Entity;
 using QLCuaHangDienThoai.Models;
@@ -7,27 +8,24 @@ namespace QLCuaHangDienThoai.DAL
 {
     class GioHangDAL
     {
-        private static TaiKhoan tmp;
+        private static GioHang tmp;
         private static DataTable data;
 
-        public static List<TaiKhoan> LayTatCa()
+        public static List<GioHang> LayTatCa()
         {
-            List<TaiKhoan> listItems = new List<TaiKhoan>();
+            List<GioHang> listItems = new List<GioHang>();
             data = new DataTable();
-            string strQuery = "select * from TaiKhoan";
+            string strQuery = "select * from GioHang";
             data = SQLServer.LayDuLieu(strQuery);
             foreach (DataRow item in data.Rows)
             {
-                tmp = new TaiKhoan
+                tmp = new GioHang
                 {
-                    TenTaiKhoan = item["MaGiaoVien"].ToString(),
-                    MatKhau = item["MatKhau"].ToString(),
-                    HoTen = item["QueQuan"].ToString(),
-                    GioiTinh = (bool)item["QueQuan"],
-                    SoDienThoai = item["QueQuan"].ToString(),
-                    Email = item["DiaChi"].ToString(),
-                    DiaChi = item["DiaChi"].ToString(),
-                    IsAdmin = (bool)item["DiaChi"],
+                    Id = (int)item["Id"],
+                    TaiKhoan = item["TaiKhoan"].ToString(),
+                    IdDienThoai = (int)item["IdDienThoai"],
+                    DaDatHang = (bool)item["DaDatHang"],
+                    NgayThem = (DateTime)item["NgayThem"]
                 };
 
                 listItems.Add(tmp);
@@ -35,27 +33,64 @@ namespace QLCuaHangDienThoai.DAL
             return listItems;
         }
 
-        public static TaiKhoan LayTheoId(string Id)
+        public static List<GioHang> LayTheoTaiKhoan(string TenTaiKhoan)
+        {
+            List<GioHang> listItems = new List<GioHang>();
+            data = new DataTable();
+            string strQuery = "select * from GioHang where TaiKhoan = '" + TenTaiKhoan + "' and DaDatHang = 0";
+            data = SQLServer.LayDuLieu(strQuery);
+            foreach (DataRow item in data.Rows)
+            {
+                tmp = new GioHang
+                {
+                    Id = (int)item["Id"],
+                    TaiKhoan = item["TaiKhoan"].ToString(),
+                    IdDienThoai = (int)item["IdDienThoai"],
+                    DaDatHang = (bool)item["DaDatHang"],
+                    NgayThem = (DateTime)item["NgayThem"]
+                };
+
+                listItems.Add(tmp);
+            }
+            return listItems;
+        }
+
+        public static GioHang CheckGioHang(string TaiKhoan, int IdDienThoai)
         {
             data = new DataTable();
-            string strQuery = "select * from TaiKhoan where TenTaiKhoan = '" + Id + "'";
+            string strQuery = "select * from GioHang where TaiKhoan = '" + TaiKhoan + "' and IdDienThoai = '" + IdDienThoai + "'";
             data = SQLServer.LayDuLieu(strQuery);
             if (data.Rows.Count > 0)
             {
-                tmp = new TaiKhoan
+                tmp = new GioHang
                 {
-                    TenTaiKhoan = data.Rows[0]["MaGiaoVien"].ToString(),
-                    MatKhau = data.Rows[0]["MatKhau"].ToString(),
-                    HoTen = data.Rows[0]["QueQuan"].ToString(),
-                    GioiTinh = (bool)data.Rows[0]["QueQuan"],
-                    SoDienThoai = data.Rows[0]["QueQuan"].ToString(),
-                    Email = data.Rows[0]["DiaChi"].ToString(),
-                    DiaChi = data.Rows[0]["DiaChi"].ToString(),
-                    IsAdmin = (bool)data.Rows[0]["DiaChi"]
+                    Id = (int)data.Rows[0]["Id"],
+                    TaiKhoan = data.Rows[0]["TaiKhoan"].ToString(),
+                    IdDienThoai = (int)data.Rows[0]["IdDienThoai"],
+                    DaDatHang = (bool)data.Rows[0]["DaDatHang"],
+                    NgayThem = (DateTime)data.Rows[0]["NgayThem"]
                 };
                 return tmp;
             }
             return null;
+        }
+
+        public static bool Xoa(string Id)
+        {
+            string strQuery = "Delete from GioHang where Id='" + Id + "'";
+
+            return SQLServer.ThucHienCauLenh(strQuery);
+        }
+
+        public static bool ThemMoi(GioHang item)
+        {
+            string strQuery = "Insert into GioHang values(" +
+                "'" + item.TaiKhoan + "', " +
+                "'" + item.IdDienThoai + "', " +
+                "'" + item.DaDatHang + "', " +
+                "'" + item.NgayThem + "')";
+
+            return SQLServer.ThucHienCauLenh(strQuery);
         }
     }
 }

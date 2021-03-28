@@ -73,7 +73,7 @@ namespace QLCuaHangDienThoai.GUI
             this.tbTaiKhoan.Name = "tbTaiKhoan";
             this.tbTaiKhoan.Size = new System.Drawing.Size(100, 20);
             this.tbTaiKhoan.TabIndex = 3;
-            this.tbTaiKhoan.Text = "Lanh";
+            this.tbTaiKhoan.Text = "User";
             // 
             // tbMatKhau
             // 

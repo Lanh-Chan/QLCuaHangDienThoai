@@ -3,6 +3,7 @@ using QLCuaHangDienThoai.Models;
 using System.Collections.Generic;
 using QLCuaHangDienThoai.DAL;
 using System.Drawing;
+using System;
 
 namespace QLCuaHangDienThoai.GUI
 {
@@ -364,7 +365,9 @@ namespace QLCuaHangDienThoai.GUI
                     MoTa = tbTMMTDT.Text,
                     SoLuong = (int)nbTMSLDT.Value,
                     Gia = (int)nbTMGiaDT.Value,
-                    UrlHinhAnh = UrlHinhAnhTM
+                    UrlHinhAnh = UrlHinhAnhTM,
+                    Id = 0,
+                    LoaiDienThoai = ((LoaiDienThoai)cbbTMLoaiDT.SelectedItem).Ten
                 };
 
                 bool rs = DienThoaiDAL.ThemMoi(tmp);
@@ -395,9 +398,10 @@ namespace QLCuaHangDienThoai.GUI
             {
                 string fullPath = openFile.FileName;
                 Image tmpImage = Image.FromFile(fullPath);
-                string[] strs = fullPath.Split('\\');
+                string[] strs = fullPath.Split('.');
                 string fileName = strs[strs.Length - 1];
-                UrlHinhAnhTM = "Images/" + fileName;
+                string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+                UrlHinhAnhTM = "Images/" + timeStamp + "." + fileName;
                 tmpImage.Save(UrlHinhAnhTM);
                 pbTMDT.Image = Image.FromFile(UrlHinhAnhTM);
             }

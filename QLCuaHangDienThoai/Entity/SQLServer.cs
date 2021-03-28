@@ -6,8 +6,8 @@ namespace QLCuaHangDienThoai.Entity
 {
     class SQLServer
     {
-        // private static readonly string tenServer = @"DESKTOP-L9SU1OT\SQLEXPRESS";
-        private static readonly string tenServer = @"LAPTOP-I7PSPJDI\SQLEXPRESS";
+        private static readonly string tenServer = @"DESKTOP-L9SU1OT\SQLEXPRESS";
+        // private static readonly string tenServer = @"LAPTOP-I7PSPJDI\SQLEXPRESS";
         private static readonly string tenDataBase = "QLCuaHangDienThoaiDb";
 
         private static readonly string strConnect = "Data Source=" + tenServer + ";Initial Catalog=" +

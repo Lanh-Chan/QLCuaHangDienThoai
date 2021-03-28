@@ -14,9 +14,9 @@ namespace QLCuaHangDienThoai.Models
 
         public static TaiKhoan taiKhoanSession = new TaiKhoan()
         {
-            TenTaiKhoan = "TenTaiKhoan",
-            MatKhau = "MatKhau",
-            HoTen = "HoTen",
+            TenTaiKhoan = "",
+            MatKhau = "",
+            HoTen = "",
             GioiTinh = true,
             SoDienThoai = "",
             Email = "",

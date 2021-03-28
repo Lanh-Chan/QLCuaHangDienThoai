@@ -16,6 +16,6 @@ namespace QLCuaHangDienThoai.Models
 
         public bool DaDatHang { get; set; }
 
-        public string NgayThem { get; set; }
+        public DateTime NgayThem { get; set; }
     }
 }

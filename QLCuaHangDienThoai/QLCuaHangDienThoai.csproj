@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,30 @@
     <Compile Include="DAL\LoaiDienThoaiDAL.cs" />
     <Compile Include="DAL\TaiKhoanDAL.cs" />
     <Compile Include="Entity\SQLServer.cs" />
+    <Compile Include="GUI\DangKyTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DangKyTaiKhoan.Designer.cs">
+      <DependentUpon>DangKyTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\GioHangControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\GioHangControl.Designer.cs">
+      <DependentUpon>GioHangControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\LichSuDatHangControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\LichSuDatHangControl.Designer.cs">
+      <DependentUpon>LichSuDatHangControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThonTinCaNhanControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThonTinCaNhanControl.Designer.cs">
+      <DependentUpon>ThonTinCaNhanControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,8 +106,20 @@
     <EmbeddedResource Include="GUI\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DangKyTaiKhoan.resx">
+      <DependentUpon>DangKyTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\GioHangControl.resx">
+      <DependentUpon>GioHangControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\LichSuDatHangControl.resx">
+      <DependentUpon>LichSuDatHangControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThonTinCaNhanControl.resx">
+      <DependentUpon>ThonTinCaNhanControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

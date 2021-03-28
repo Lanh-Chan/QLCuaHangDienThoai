@@ -63,14 +63,14 @@ namespace QLCuaHangDienThoai.GUI
                     Admin adminForm = new Admin();
                     this.Hide();
                     adminForm.ShowDialog();
-                    this.Show();
+                    this.Close();
                 }
                 else
                 {
                     TrangChu trangChuForm = new TrangChu();
                     this.Hide();
                     trangChuForm.ShowDialog();
-                    this.Show();
+                    this.Close();
                 }
 
             }
