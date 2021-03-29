@@ -59,18 +59,6 @@
     <Compile Include="GUI\DangKyTaiKhoan.Designer.cs">
       <DependentUpon>DangKyTaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\GioHangControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\GioHangControl.Designer.cs">
-      <DependentUpon>GioHangControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\LichSuDatHangControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\LichSuDatHangControl.Designer.cs">
-      <DependentUpon>LichSuDatHangControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\ThonTinCaNhanControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,12 +99,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\GioHangControl.resx">
-      <DependentUpon>GioHangControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\LichSuDatHangControl.resx">
-      <DependentUpon>LichSuDatHangControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThonTinCaNhanControl.resx">
       <DependentUpon>ThonTinCaNhanControl.cs</DependentUpon>

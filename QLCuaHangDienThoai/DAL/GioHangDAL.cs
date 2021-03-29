@@ -37,17 +37,25 @@ namespace QLCuaHangDienThoai.DAL
         {
             List<GioHang> listItems = new List<GioHang>();
             data = new DataTable();
-            string strQuery = "select * from GioHang where TaiKhoan = '" + TenTaiKhoan + "' and DaDatHang = 0";
+            string strQuery = "select GH.Id as IdGioHang, TaiKhoan, IdDienThoai, DaDatHang, NgayThem, DT.Id as IdDienThoai, DT.Ten as TenDienThoai, DT.Gia, DT.UrlHinhAnh, DT.SoLuong from GioHang as GH join DienThoai as DT on GH.IdDienThoai = DT.Id  where GH.TaiKhoan = '" + TenTaiKhoan + "' and GH.DaDatHang = 0";
             data = SQLServer.LayDuLieu(strQuery);
             foreach (DataRow item in data.Rows)
             {
                 tmp = new GioHang
                 {
-                    Id = (int)item["Id"],
+                    Id = (int)item["IdGioHang"],
                     TaiKhoan = item["TaiKhoan"].ToString(),
                     IdDienThoai = (int)item["IdDienThoai"],
                     DaDatHang = (bool)item["DaDatHang"],
-                    NgayThem = (DateTime)item["NgayThem"]
+                    NgayThem = (DateTime)item["NgayThem"],
+                    _DienThoai = new DienThoai
+                    {
+                        Id = (int)item["IdDienThoai"],
+                        Gia = (int)item["Gia"],
+                        SoLuong = (int)item["SoLuong"],
+                        Ten = item["TenDienThoai"].ToString(),
+                        UrlHinhAnh = item["UrlHinhAnh"].ToString(),
+                    }
                 };
 
                 listItems.Add(tmp);

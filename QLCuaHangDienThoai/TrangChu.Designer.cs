@@ -33,13 +33,13 @@ namespace QLCuaHangDienThoai
             this.tabTrangChu = new System.Windows.Forms.TabPage();
             this.pnMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbDangKy = new System.Windows.Forms.Label();
             this.lbDangXuat = new System.Windows.Forms.Label();
             this.lbDangNhap = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.tbTimKiem = new System.Windows.Forms.TextBox();
             this.cbbLoaiDienThoai = new System.Windows.Forms.ComboBox();
-            this.lbDangKy = new System.Windows.Forms.Label();
             this.tabControlTrangChu.SuspendLayout();
             this.tabTrangChu.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -91,6 +91,19 @@ namespace QLCuaHangDienThoai
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(786, 61);
             this.panel1.TabIndex = 0;
+            // 
+            // lbDangKy
+            // 
+            this.lbDangKy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDangKy.AutoSize = true;
+            this.lbDangKy.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbDangKy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbDangKy.Location = new System.Drawing.Point(718, 20);
+            this.lbDangKy.Name = "lbDangKy";
+            this.lbDangKy.Size = new System.Drawing.Size(47, 13);
+            this.lbDangKy.TabIndex = 6;
+            this.lbDangKy.Text = "Đăng ký";
+            this.lbDangKy.Click += new System.EventHandler(this.lbDangKy_Click);
             // 
             // lbDangXuat
             // 
@@ -159,18 +172,6 @@ namespace QLCuaHangDienThoai
             this.cbbLoaiDienThoai.Size = new System.Drawing.Size(177, 21);
             this.cbbLoaiDienThoai.TabIndex = 0;
             this.cbbLoaiDienThoai.SelectedIndexChanged += new System.EventHandler(this.cbbLoaiDienThoai_SelectedIndexChanged);
-            // 
-            // lbDangKy
-            // 
-            this.lbDangKy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbDangKy.AutoSize = true;
-            this.lbDangKy.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbDangKy.Location = new System.Drawing.Point(718, 19);
-            this.lbDangKy.Name = "lbDangKy";
-            this.lbDangKy.Size = new System.Drawing.Size(47, 13);
-            this.lbDangKy.TabIndex = 6;
-            this.lbDangKy.Text = "Đăng ký";
-            this.lbDangKy.Click += new System.EventHandler(this.lbDangKy_Click);
             // 
             // TrangChu
             // 

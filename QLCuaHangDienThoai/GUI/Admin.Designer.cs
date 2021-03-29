@@ -36,6 +36,7 @@ namespace QLCuaHangDienThoai.GUI
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabCTTaiKhoan = new System.Windows.Forms.TabControl();
             this.tabThongTinTK = new System.Windows.Forms.TabPage();
+            this.btnXoaTK = new System.Windows.Forms.Button();
             this.lbTBCNTK = new System.Windows.Forms.Label();
             this.btnHuyCapNhatTK = new System.Windows.Forms.Button();
             this.btnCapNhatTK = new System.Windows.Forms.Button();
@@ -79,6 +80,8 @@ namespace QLCuaHangDienThoai.GUI
             this.panel6 = new System.Windows.Forms.Panel();
             this.tabCTDienThoai = new System.Windows.Forms.TabControl();
             this.tabTTDienThoai = new System.Windows.Forms.TabPage();
+            this.btnXoaDienThoai = new System.Windows.Forms.Button();
+            this.btnFileTTDT = new System.Windows.Forms.Button();
             this.nbTTGiaDT = new System.Windows.Forms.NumericUpDown();
             this.label16 = new System.Windows.Forms.Label();
             this.pbTTDT = new System.Windows.Forms.PictureBox();
@@ -95,6 +98,7 @@ namespace QLCuaHangDienThoai.GUI
             this.tbTTTenDT = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.tabTMDienThoai = new System.Windows.Forms.TabPage();
+            this.btnFileTMDT = new System.Windows.Forms.Button();
             this.nbTMGiaDT = new System.Windows.Forms.NumericUpDown();
             this.label23 = new System.Windows.Forms.Label();
             this.pbTMDT = new System.Windows.Forms.PictureBox();
@@ -113,14 +117,10 @@ namespace QLCuaHangDienThoai.GUI
             this.panel5 = new System.Windows.Forms.Panel();
             this.dgvDienThoai = new System.Windows.Forms.DataGridView();
             this.tabQLLoaiDienThoai = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnFileTTDT = new System.Windows.Forms.Button();
-            this.btnFileTMDT = new System.Windows.Forms.Button();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.tabCTLDT = new System.Windows.Forms.TabControl();
             this.tabTTLDT = new System.Windows.Forms.TabPage();
+            this.btnXoaLDT = new System.Windows.Forms.Button();
             this.btnHuyCNLDT = new System.Windows.Forms.Button();
             this.lbTBCNLDT = new System.Windows.Forms.Label();
             this.btnCNLDT = new System.Windows.Forms.Button();
@@ -136,10 +136,11 @@ namespace QLCuaHangDienThoai.GUI
             this.label40 = new System.Windows.Forms.Label();
             this.tbTMTenLDT = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.dgvLoaiDienThoai = new System.Windows.Forms.DataGridView();
-            this.btnXoaLDT = new System.Windows.Forms.Button();
-            this.btnXoaTK = new System.Windows.Forms.Button();
-            this.btnXoaDienThoai = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lbDangXuat = new System.Windows.Forms.Label();
             this.tabAdmin.SuspendLayout();
             this.tabQLTaiKhoan.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -162,31 +163,31 @@ namespace QLCuaHangDienThoai.GUI
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDienThoai)).BeginInit();
             this.tabQLLoaiDienThoai.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.tabCTLDT.SuspendLayout();
             this.tabTTLDT.SuspendLayout();
             this.tabTMLDT.SuspendLayout();
+            this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoaiDienThoai)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbTaiKhoan
             // 
             this.lbTaiKhoan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbTaiKhoan.AutoSize = true;
-            this.lbTaiKhoan.Location = new System.Drawing.Point(712, 9);
+            this.lbTaiKhoan.Location = new System.Drawing.Point(607, 9);
             this.lbTaiKhoan.Name = "lbTaiKhoan";
-            this.lbTaiKhoan.Size = new System.Drawing.Size(76, 13);
+            this.lbTaiKhoan.Size = new System.Drawing.Size(87, 13);
             this.lbTaiKhoan.TabIndex = 0;
-            this.lbTaiKhoan.Text = "Nguyen Van A";
+            this.lbTaiKhoan.Text = "Tẩn Thị Lan Anh";
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(650, 9);
+            this.label1.Location = new System.Drawing.Point(553, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 1;
@@ -264,6 +265,16 @@ namespace QLCuaHangDienThoai.GUI
             this.tabThongTinTK.TabIndex = 0;
             this.tabThongTinTK.Text = "Thông Tin";
             this.tabThongTinTK.UseVisualStyleBackColor = true;
+            // 
+            // btnXoaTK
+            // 
+            this.btnXoaTK.Location = new System.Drawing.Point(232, 300);
+            this.btnXoaTK.Name = "btnXoaTK";
+            this.btnXoaTK.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaTK.TabIndex = 39;
+            this.btnXoaTK.Text = "Xoá";
+            this.btnXoaTK.UseVisualStyleBackColor = true;
+            this.btnXoaTK.Click += new System.EventHandler(this.btnXoaTK_Click);
             // 
             // lbTBCNTK
             // 
@@ -688,6 +699,27 @@ namespace QLCuaHangDienThoai.GUI
             this.tabTTDienThoai.Text = "Thông Tin";
             this.tabTTDienThoai.UseVisualStyleBackColor = true;
             // 
+            // btnXoaDienThoai
+            // 
+            this.btnXoaDienThoai.Location = new System.Drawing.Point(225, 323);
+            this.btnXoaDienThoai.Name = "btnXoaDienThoai";
+            this.btnXoaDienThoai.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaDienThoai.TabIndex = 42;
+            this.btnXoaDienThoai.Text = "Xoá";
+            this.btnXoaDienThoai.UseVisualStyleBackColor = true;
+            this.btnXoaDienThoai.Click += new System.EventHandler(this.btnXoaDienThoai_Click);
+            // 
+            // btnFileTTDT
+            // 
+            this.btnFileTTDT.AutoSize = true;
+            this.btnFileTTDT.Location = new System.Drawing.Point(247, 203);
+            this.btnFileTTDT.Name = "btnFileTTDT";
+            this.btnFileTTDT.Size = new System.Drawing.Size(50, 23);
+            this.btnFileTTDT.TabIndex = 38;
+            this.btnFileTTDT.Text = "mới";
+            this.btnFileTTDT.UseVisualStyleBackColor = true;
+            this.btnFileTTDT.Click += new System.EventHandler(this.btnFileTTDT_Click);
+            // 
             // nbTTGiaDT
             // 
             this.nbTTGiaDT.Location = new System.Drawing.Point(103, 165);
@@ -846,6 +878,17 @@ namespace QLCuaHangDienThoai.GUI
             this.tabTMDienThoai.TabIndex = 1;
             this.tabTMDienThoai.Text = "Thêm Mới";
             this.tabTMDienThoai.UseVisualStyleBackColor = true;
+            // 
+            // btnFileTMDT
+            // 
+            this.btnFileTMDT.AutoSize = true;
+            this.btnFileTMDT.Location = new System.Drawing.Point(262, 184);
+            this.btnFileTMDT.Name = "btnFileTMDT";
+            this.btnFileTMDT.Size = new System.Drawing.Size(50, 23);
+            this.btnFileTMDT.TabIndex = 40;
+            this.btnFileTMDT.Text = "mới";
+            this.btnFileTMDT.UseVisualStyleBackColor = true;
+            this.btnFileTMDT.Click += new System.EventHandler(this.btnFileTMDT_Click);
             // 
             // nbTMGiaDT
             // 
@@ -1017,58 +1060,6 @@ namespace QLCuaHangDienThoai.GUI
             this.tabQLLoaiDienThoai.Text = "Quản Lý Loại Điện Thoại";
             this.tabQLLoaiDienThoai.UseVisualStyleBackColor = true;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.lbTaiKhoan);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(800, 26);
-            this.panel3.TabIndex = 3;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.tabAdmin);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 26);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(800, 424);
-            this.panel4.TabIndex = 4;
-            // 
-            // btnFileTTDT
-            // 
-            this.btnFileTTDT.AutoSize = true;
-            this.btnFileTTDT.Location = new System.Drawing.Point(247, 203);
-            this.btnFileTTDT.Name = "btnFileTTDT";
-            this.btnFileTTDT.Size = new System.Drawing.Size(50, 23);
-            this.btnFileTTDT.TabIndex = 38;
-            this.btnFileTTDT.Text = "mới";
-            this.btnFileTTDT.UseVisualStyleBackColor = true;
-            this.btnFileTTDT.Click += new System.EventHandler(this.btnFileTTDT_Click);
-            // 
-            // btnFileTMDT
-            // 
-            this.btnFileTMDT.AutoSize = true;
-            this.btnFileTMDT.Location = new System.Drawing.Point(262, 184);
-            this.btnFileTMDT.Name = "btnFileTMDT";
-            this.btnFileTMDT.Size = new System.Drawing.Size(50, 23);
-            this.btnFileTMDT.TabIndex = 40;
-            this.btnFileTMDT.Text = "mới";
-            this.btnFileTMDT.UseVisualStyleBackColor = true;
-            this.btnFileTMDT.Click += new System.EventHandler(this.btnFileTMDT_Click);
-            // 
-            // panel7
-            // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.Controls.Add(this.dgvLoaiDienThoai);
-            this.panel7.Location = new System.Drawing.Point(3, 3);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(427, 392);
-            this.panel7.TabIndex = 0;
-            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.tabCTLDT);
@@ -1106,6 +1097,16 @@ namespace QLCuaHangDienThoai.GUI
             this.tabTTLDT.TabIndex = 0;
             this.tabTTLDT.Text = "Thông Tin";
             this.tabTTLDT.UseVisualStyleBackColor = true;
+            // 
+            // btnXoaLDT
+            // 
+            this.btnXoaLDT.Location = new System.Drawing.Point(247, 218);
+            this.btnXoaLDT.Name = "btnXoaLDT";
+            this.btnXoaLDT.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaLDT.TabIndex = 34;
+            this.btnXoaLDT.Text = "Xoá";
+            this.btnXoaLDT.UseVisualStyleBackColor = true;
+            this.btnXoaLDT.Click += new System.EventHandler(this.btnXoaLDT_Click);
             // 
             // btnHuyCNLDT
             // 
@@ -1244,6 +1245,17 @@ namespace QLCuaHangDienThoai.GUI
             this.label41.TabIndex = 0;
             this.label41.Text = "Tên:";
             // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.Controls.Add(this.dgvLoaiDienThoai);
+            this.panel7.Location = new System.Drawing.Point(3, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(427, 392);
+            this.panel7.TabIndex = 0;
+            // 
             // dgvLoaiDienThoai
             // 
             this.dgvLoaiDienThoai.AllowUserToAddRows = false;
@@ -1258,35 +1270,37 @@ namespace QLCuaHangDienThoai.GUI
             this.dgvLoaiDienThoai.TabIndex = 0;
             this.dgvLoaiDienThoai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLDT_CellClick);
             // 
-            // btnXoaLDT
+            // panel3
             // 
-            this.btnXoaLDT.Location = new System.Drawing.Point(247, 218);
-            this.btnXoaLDT.Name = "btnXoaLDT";
-            this.btnXoaLDT.Size = new System.Drawing.Size(75, 23);
-            this.btnXoaLDT.TabIndex = 34;
-            this.btnXoaLDT.Text = "Xoá";
-            this.btnXoaLDT.UseVisualStyleBackColor = true;
-            this.btnXoaLDT.Click += new System.EventHandler(this.btnXoaLDT_Click);
+            this.panel3.Controls.Add(this.lbDangXuat);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.lbTaiKhoan);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(800, 26);
+            this.panel3.TabIndex = 3;
             // 
-            // btnXoaTK
+            // panel4
             // 
-            this.btnXoaTK.Location = new System.Drawing.Point(232, 300);
-            this.btnXoaTK.Name = "btnXoaTK";
-            this.btnXoaTK.Size = new System.Drawing.Size(75, 23);
-            this.btnXoaTK.TabIndex = 39;
-            this.btnXoaTK.Text = "Xoá";
-            this.btnXoaTK.UseVisualStyleBackColor = true;
-            this.btnXoaTK.Click += new System.EventHandler(this.btnXoaTK_Click);
+            this.panel4.Controls.Add(this.tabAdmin);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 26);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(800, 424);
+            this.panel4.TabIndex = 4;
             // 
-            // btnXoaDienThoai
+            // lbDangXuat
             // 
-            this.btnXoaDienThoai.Location = new System.Drawing.Point(225, 323);
-            this.btnXoaDienThoai.Name = "btnXoaDienThoai";
-            this.btnXoaDienThoai.Size = new System.Drawing.Size(75, 23);
-            this.btnXoaDienThoai.TabIndex = 42;
-            this.btnXoaDienThoai.Text = "Xoá";
-            this.btnXoaDienThoai.UseVisualStyleBackColor = true;
-            this.btnXoaDienThoai.Click += new System.EventHandler(this.btnXoaDienThoai_Click);
+            this.lbDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDangXuat.AutoSize = true;
+            this.lbDangXuat.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbDangXuat.Location = new System.Drawing.Point(731, 9);
+            this.lbDangXuat.Name = "lbDangXuat";
+            this.lbDangXuat.Size = new System.Drawing.Size(56, 13);
+            this.lbDangXuat.TabIndex = 2;
+            this.lbDangXuat.Text = "Đăng xuất";
+            this.lbDangXuat.Click += new System.EventHandler(this.lbDangXuat_Click);
             // 
             // Admin
             // 
@@ -1323,17 +1337,17 @@ namespace QLCuaHangDienThoai.GUI
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDienThoai)).EndInit();
             this.tabQLLoaiDienThoai.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.tabCTLDT.ResumeLayout(false);
             this.tabTTLDT.ResumeLayout(false);
             this.tabTTLDT.PerformLayout();
             this.tabTMLDT.ResumeLayout(false);
             this.tabTMLDT.PerformLayout();
+            this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoaiDienThoai)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1451,5 +1465,6 @@ namespace QLCuaHangDienThoai.GUI
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.DataGridView dgvLoaiDienThoai;
         private System.Windows.Forms.Button btnXoaDienThoai;
+        private System.Windows.Forms.Label lbDangXuat;
     }
 }

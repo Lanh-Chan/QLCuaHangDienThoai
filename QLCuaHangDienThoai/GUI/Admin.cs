@@ -35,6 +35,7 @@ namespace QLCuaHangDienThoai.GUI
             LoadTTLoaiDienThoaiHienTai();
         }
 
+        // ---  TAB TÀI KHOẢN
         private void SetUpDGV()
         {
             // Khởi tạo datagridview tài khoản
@@ -241,7 +242,8 @@ namespace QLCuaHangDienThoai.GUI
             cbTMIsAdmin.Checked = false;
         }
 
-        // Tab Điện Thoại
+
+        // ---  TAB ĐIỆN THOẠI
         private void FillDataDGVDT(IList<DienThoai> listItems)
         {
             BindingSource dts = new BindingSource();
@@ -445,7 +447,7 @@ namespace QLCuaHangDienThoai.GUI
             }
         }
 
-        // Loại Điện Thoại
+        // ---  TAB LOẠI ĐIỆN THOẠI
         private void FillDataDGVLDT(IList<LoaiDienThoai> listItems)
         {
             BindingSource dts = new BindingSource();
@@ -559,6 +561,25 @@ namespace QLCuaHangDienThoai.GUI
         {
             lbTBTMLDT.Text = "";
             ResetInputLoaiDienThoai();
+        }
+
+        private void lbDangXuat_Click(object sender, EventArgs e)
+        {
+            TaiKhoan.taiKhoanSession = new TaiKhoan()
+            {
+                TenTaiKhoan = "",
+                MatKhau = "",
+                HoTen = "",
+                GioiTinh = false,
+                SoDienThoai = "",
+                Email = "",
+                DiaChi = "",
+                IsAdmin = false
+            };
+            DangNhap dangNhapForm = new DangNhap();
+            this.Hide();
+            dangNhapForm.ShowDialog();
+            this.Close();
         }
     }
 }
