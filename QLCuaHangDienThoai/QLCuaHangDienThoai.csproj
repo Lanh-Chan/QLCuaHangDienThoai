@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="DAL\DienThoaiDAL.cs" />
     <Compile Include="DAL\GioHangDAL.cs" />
-    <Compile Include="DAL\HoaDonDAL.cs" />
+    <Compile Include="DAL\DatHangDAL.cs" />
     <Compile Include="DAL\LoaiDienThoaiDAL.cs" />
     <Compile Include="DAL\TaiKhoanDAL.cs" />
     <Compile Include="Entity\SQLServer.cs" />
@@ -86,7 +86,7 @@
     <Compile Include="Models\ChiTietHoaDon.cs" />
     <Compile Include="Models\DienThoai.cs" />
     <Compile Include="Models\GioHang.cs" />
-    <Compile Include="Models\HoaDon.cs" />
+    <Compile Include="Models\DatHang.cs" />
     <Compile Include="Models\LoaiDienThoai.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Program.cs" />

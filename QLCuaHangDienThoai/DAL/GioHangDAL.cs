@@ -83,7 +83,7 @@ namespace QLCuaHangDienThoai.DAL
             return null;
         }
 
-        public static bool Xoa(string Id)
+        public static bool Xoa(int Id)
         {
             string strQuery = "Delete from GioHang where Id='" + Id + "'";
 

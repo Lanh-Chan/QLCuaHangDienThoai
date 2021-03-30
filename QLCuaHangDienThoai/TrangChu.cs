@@ -123,6 +123,7 @@ namespace QLCuaHangDienThoai
         // TAB TRANG CHỦ
         private void LoadDienThoai(IList<DienThoai> listItems)
         {
+            pnDienThoai.Controls.Clear();
             int i = 0;
             foreach (var item in listItems)
             {
@@ -134,7 +135,7 @@ namespace QLCuaHangDienThoai
         private void TaoKhungTrangChu(int topPN, int leftPN, DienThoai dienThoai)
         {
             Panel pn = new Panel();
-            pn.Parent = pnMain;
+            pn.Parent = pnDienThoai;
             pn.Top = topPN;
             pn.Left = leftPN;
             pn.Width = 170;
@@ -210,31 +211,38 @@ namespace QLCuaHangDienThoai
                 Button btn = (Button)sender;
                 DienThoai dienThoai = (DienThoai)btn.Tag;
 
-                if (GioHangDAL.CheckGioHang(TaiKhoan.taiKhoanSession.TenTaiKhoan, dienThoai.Id) == null)
+                if (dienThoai.SoLuong < 1)
                 {
-                    DateTime today = DateTime.Today;
-                    GioHang tmp = new GioHang
-                    {
-                        Id = 0,
-                        TaiKhoan = TaiKhoan.taiKhoanSession.TenTaiKhoan,
-                        IdDienThoai = dienThoai.Id,
-                        DaDatHang = false,
-                        NgayThem = today
-                    };
-                    bool rs = GioHangDAL.ThemMoi(tmp);
-                    if (rs)
-                    {
-                        loadGioHang();
-                        MessageBox.Show("Thành Công, Đã thêm vào giỏ hàng của bạn.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thất bại, Không thêm được vào giỏ hàng.");
-                    }
+                    MessageBox.Show("Xin Lỗi, Đã hết hàng.");
                 }
                 else
                 {
-                    MessageBox.Show("Thành Công, Đã thêm vào giỏ hàng của bạn.");
+                    if (GioHangDAL.CheckGioHang(TaiKhoan.taiKhoanSession.TenTaiKhoan, dienThoai.Id) == null)
+                    {
+                        DateTime today = DateTime.Today;
+                        GioHang tmp = new GioHang
+                        {
+                            Id = 0,
+                            TaiKhoan = TaiKhoan.taiKhoanSession.TenTaiKhoan,
+                            IdDienThoai = dienThoai.Id,
+                            DaDatHang = false,
+                            NgayThem = today
+                        };
+                        bool rs = GioHangDAL.ThemMoi(tmp);
+                        if (rs)
+                        {
+                            loadGioHang();
+                            MessageBox.Show("Thành Công, Đã thêm vào giỏ hàng của bạn.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Thất bại, Không thêm được vào giỏ hàng.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thành Công, Đã thêm vào giỏ hàng của bạn.");
+                    }
                 }
             }
         }
@@ -250,7 +258,7 @@ namespace QLCuaHangDienThoai
             {
                 listDienThoai = DienThoaiDAL.LayTheoLoaiDienThoai(idLoaiDienThoai);
             }
-            pnMain.Controls.Clear();
+            
             LoadDienThoai(listDienThoai);
         }
 
@@ -258,7 +266,6 @@ namespace QLCuaHangDienThoai
         {
             string txtTimKiem = tbTimKiem.Text;
             listDienThoai = DienThoaiDAL.LayTheoTenDienThoai(txtTimKiem);
-            pnMain.Controls.Clear();
             LoadDienThoai(listDienThoai);
         }
 
@@ -290,11 +297,10 @@ namespace QLCuaHangDienThoai
             Panel pn = new Panel();
             pn.Parent = pnGioHang;
             pn.Top = topPN;
-            pn.Left = 10;
+            pn.Left = 30;
             pn.Width = 700;
             pn.Height = 150;
             pn.BackColor = Color.LightGray;
-            pn.Anchor = AnchorStyles.Top;
 
             PictureBox ptb = new PictureBox();
             ptb.Parent = pn;
@@ -318,6 +324,13 @@ namespace QLCuaHangDienThoai
             lbTenDienThoai.Height = 14;
             lbTenDienThoai.Text = item._DienThoai.Ten;
             lbTenDienThoai.Font = new Font(Label.DefaultFont, FontStyle.Bold);
+
+            Label lbNgayThem = new Label();
+            lbNgayThem.Parent = pn;
+            lbNgayThem.Top = topLBTen;
+            lbNgayThem.Left = 400;
+            lbNgayThem.AutoSize = true;
+            lbNgayThem.Text = "Ngày thêm: " + item.NgayThem.ToString("dd/M/yyyyy");
 
             Label lbGiaDienThoai = new Label();
             lbGiaDienThoai.Parent = pn;
@@ -367,15 +380,78 @@ namespace QLCuaHangDienThoai
             btnDatHang.Left = 400;
             btnDatHang.AutoSize = true;
             btnDatHang.Text = "Đặt Hàng";
-            // btnDatHang.Tag = dienThoai;
+            btnDatHang.Click += BtnDatHang_Click;
 
+            ChiTietDatHang ctDatHang = new ChiTietDatHang
+            {
+                nbSoLuong = nbSoLuong,
+                IdDienThoai = item._DienThoai.Id,
+                GiaDienThoai = item._DienThoai.Gia,
+                SoLuongCu = item._DienThoai.SoLuong
+            };
+            btnDatHang.Tag = ctDatHang;
+            
             Button btnXoa = new Button();
             btnXoa.Parent = pn;
             btnXoa.Top = topLBTen + 90;
             btnXoa.Left = 500;
             btnXoa.AutoSize = true;
             btnXoa.Text = "Xoá Khỏi Giỏ Hàng";
-            // btnDatHang.Tag = dienThoai;
+            btnXoa.Tag = item.Id;
+            btnXoa.Click += BtnXoa_Click;
+        }
+
+        private void BtnXoa_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int IdGioHang = (int)btn.Tag;
+            bool rs = GioHangDAL.Xoa(IdGioHang);
+            if (rs)
+            {
+                loadGioHang();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi, Xoá ra khỏi giỏ hàng thất bại");
+            }
+        }
+
+        private void BtnDatHang_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            ChiTietDatHang ctDatHang = (ChiTietDatHang)btn.Tag;
+            DateTime today = DateTime.Today;
+            DatHang tmpDatHang = new DatHang
+            {
+                Id = 0,
+                TaiKhoan = TaiKhoan.taiKhoanSession.TenTaiKhoan,
+                TrangThai = 1,
+                NgayTao = today,
+                TongTien = (int)(ctDatHang.GiaDienThoai * ctDatHang.nbSoLuong.Value),
+                IdDienThoai = ctDatHang.IdDienThoai
+            };
+            bool rs = DatHangDAL.ThemMoi(tmpDatHang);
+            if (rs)
+            {
+                DienThoai tmpDT = new DienThoai
+                {
+                    Id = ctDatHang.IdDienThoai,
+                    SoLuong = (int)(ctDatHang.SoLuongCu - ctDatHang.nbSoLuong.Value)
+                };
+                DienThoaiDAL.CapNhatSoLuong(tmpDT);
+
+                // Cập nhật lai dữ liệu trang chủ
+                listDienThoai = DienThoaiDAL.LayTatCa();
+                LoadDienThoai(listDienThoai);
+
+                // Cập nhật lai dữ liệu Giỏ Hàng
+                loadGioHang();
+                MessageBox.Show("Đặt hàng thành công");
+            }
+            else
+            {
+                MessageBox.Show("Lỗi, Đặt hàng thất bại");
+            }
         }
 
         private void NbSoLuong_ValueChanged(object sender, EventArgs e)
@@ -392,7 +468,6 @@ namespace QLCuaHangDienThoai
             {
                 lbTongTien.Text = "Tổng Tiền: " + ct.GiaDienThoai * nb.Value + " vnđ";
             }
-            
         }
 
 
@@ -402,41 +477,147 @@ namespace QLCuaHangDienThoai
             pnLichSuDatHang = new Panel();
             pnLichSuDatHang.Parent = tabLichSuDatHang;
             pnLichSuDatHang.Dock = DockStyle.Fill;
+            pnLichSuDatHang.AutoScroll = true;
             loadLichSuDatHang();
         }
 
         private void loadLichSuDatHang()
         {
-            var listItems = GioHangDAL.LayTheoTaiKhoan(TaiKhoan.taiKhoanSession.TenTaiKhoan);
+            pnLichSuDatHang.Controls.Clear();
+            var listItems = DatHangDAL.LayTheoTaiKhoan(TaiKhoan.taiKhoanSession.TenTaiKhoan);
             int i = 0;
             foreach (var item in listItems)
             {
-                TaoKhungLichSuDatHang(20 + 100 * i, item);
+                TaoKhungLichSuDatHang(10 + 160 * i, item);
                 i++;
             }
         }
 
-        private void TaoKhungLichSuDatHang(int topPN, GioHang item)
+        private void TaoKhungLichSuDatHang(int topPN, DatHang item)
         {
             Panel pn = new Panel();
             pn.Parent = pnLichSuDatHang;
             pn.Top = topPN;
-            pn.Left = 50;
-            pn.Width = 200;
-            pn.Height = 60;
+            pn.Left = 30;
+            pn.Width = 700;
+            pn.Height = 150;
             pn.BackColor = Color.LightGray;
-            pn.Anchor = AnchorStyles.Top;
+
+            PictureBox ptb = new PictureBox();
+            ptb.Parent = pn;
+            ptb.Top = 10;
+            ptb.Left = 5;
+            ptb.Width = 120;
+            ptb.Height = 130;
+            ptb.BackColor = Color.Red;
+            ptb.SizeMode = PictureBoxSizeMode.StretchImage;
+            if (item._DienThoai.UrlHinhAnh.Contains("Images/"))
+            {
+                ptb.Image = Image.FromFile(item._DienThoai.UrlHinhAnh);
+            }
 
             int topLBTen = 10;
             Label lbTenDienThoai = new Label();
             lbTenDienThoai.Parent = pn;
             lbTenDienThoai.Top = topLBTen;
-            lbTenDienThoai.Left = 15;
+            lbTenDienThoai.Left = 130;
             lbTenDienThoai.Width = 140;
             lbTenDienThoai.Height = 14;
-            lbTenDienThoai.Text = item.IdDienThoai.ToString();
-            lbTenDienThoai.TextAlign = ContentAlignment.MiddleCenter;
+            lbTenDienThoai.Text = item._DienThoai.Ten;
             lbTenDienThoai.Font = new Font(Label.DefaultFont, FontStyle.Bold);
+
+            Label lbNgayThem = new Label();
+            lbNgayThem.Parent = pn;
+            lbNgayThem.Top = topLBTen;
+            lbNgayThem.Left = 400;
+            lbNgayThem.AutoSize = true;
+            lbNgayThem.Text = "Ngày đặt hàng: " + item.NgayTao.ToString("dd/M/yyyyy");
+
+            string trangThai = "Chưa thanh toán";
+            if (item.TrangThai == 2) { trangThai = "Đã thanh toán"; }
+            else if (item.TrangThai == 3) { trangThai = "Đã huỷ"; }
+            Label lbTrangThai = new Label();
+            lbTrangThai.Parent = pn;
+            lbTrangThai.Top = topLBTen + 50;
+            lbTrangThai.Left = 130;
+            lbTrangThai.AutoSize = true;
+            lbTrangThai.Text = "Trạng thái: " + trangThai;
+            // lbTrangThai.Font = new Font(Label.DefaultFont, FontStyle.Italic);
+
+
+            Label lbTongTien = new Label();
+            lbTongTien.Parent = pn;
+            lbTongTien.Top = topLBTen + 90;
+            lbTongTien.Left = 130;
+            lbTongTien.AutoSize = true;
+            lbTongTien.Text = "Tổng Tiền: " + item.TongTien.ToString() + " vnđ";
+            lbTongTien.Font = new Font(Label.DefaultFont, FontStyle.Bold);
+
+            if (item.TrangThai == 1)
+            {
+                Button btnXacNhanThanhToan = new Button();
+                btnXacNhanThanhToan.Parent = pn;
+                btnXacNhanThanhToan.Top = topLBTen + 90;
+                btnXacNhanThanhToan.Left = 400;
+                btnXacNhanThanhToan.AutoSize = true;
+                btnXacNhanThanhToan.Text = "Xác Nhận Thanh Toán";
+                btnXacNhanThanhToan.Tag = item.Id;
+                btnXacNhanThanhToan.Click += BtnXacNhanThanhToan_Click;
+
+                Button btnHuyDatHang = new Button();
+                btnHuyDatHang.Parent = pn;
+                btnHuyDatHang.Top = topLBTen + 90;
+                btnHuyDatHang.Left = 550;
+                btnHuyDatHang.AutoSize = true;
+                btnHuyDatHang.Text = "Huỷ Đặt Hàng";
+                btnHuyDatHang.Tag = item.Id;
+                btnHuyDatHang.Click += BtnHuyDatHang_Click;
+            }
+        }
+
+        private void BtnHuyDatHang_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int IdDatHang = (int)btn.Tag;
+            DatHang tmpDH = new DatHang
+            {
+                Id = IdDatHang,
+                TrangThai = 3
+            };
+            bool rs = DatHangDAL.CapNhatTrangThai(tmpDH);
+            if (rs)
+            {
+                // Cập nhật lai dữ liệu Lịch Sử Đặt hàng
+                loadLichSuDatHang();
+                MessageBox.Show("Huỷ Đặt Hàng Thành Công");
+            }
+            else
+            {
+                MessageBox.Show("Lỗi, Huỷ Thất Bại");
+            }
+
+        }
+
+        private void BtnXacNhanThanhToan_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int IdDatHang = (int)btn.Tag;
+            DatHang tmpDH = new DatHang
+            {
+                Id = IdDatHang,
+                TrangThai = 2
+            };
+            bool rs = DatHangDAL.CapNhatTrangThai(tmpDH);
+            if (rs)
+            {
+                // Cập nhật lai dữ liệu Lịch Sử Đặt hàng
+                loadLichSuDatHang();
+                MessageBox.Show("Xác Nhận Thanh Toán Thành Công");
+            }
+            else
+            {
+                MessageBox.Show("Lỗi, Xác Nhận Thất Bại");
+            }
         }
     }
 }
@@ -448,4 +629,15 @@ class ChiTietGioHang
     public int GiaDienThoai { get; set; }
 
     public int MaxSoLuong { get; set; }
+}
+
+class ChiTietDatHang
+{
+    public NumericUpDown nbSoLuong { get; set; }
+
+    public int IdDienThoai { get; set; }
+
+    public int SoLuongCu { get; set; }
+
+    public int GiaDienThoai { get; set; }
 }

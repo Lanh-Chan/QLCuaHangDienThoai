@@ -122,6 +122,15 @@ namespace QLCuaHangDienThoai.DAL
             return SQLServer.ThucHienCauLenh(strQuery);
         }
 
+        public static bool CapNhatSoLuong(DienThoai item)
+        {
+            string strQuery = "Update DienThoai set " +
+                "SoLuong='" + item.SoLuong + "'" +
+                "where Id='" + item.Id + "'";
+
+            return SQLServer.ThucHienCauLenh(strQuery);
+        }
+
         public static bool Xoa(int Id)
         {
             string strQuery = "Delete from DienThoai where Id='" + Id + "'";

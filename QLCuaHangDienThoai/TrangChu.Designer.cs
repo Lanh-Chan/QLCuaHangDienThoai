@@ -31,7 +31,7 @@ namespace QLCuaHangDienThoai
         {
             this.tabControlTrangChu = new System.Windows.Forms.TabControl();
             this.tabTrangChu = new System.Windows.Forms.TabPage();
-            this.pnMain = new System.Windows.Forms.Panel();
+            this.pnDienThoai = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbDangKy = new System.Windows.Forms.Label();
             this.lbDangXuat = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@ namespace QLCuaHangDienThoai
             // 
             // tabTrangChu
             // 
-            this.tabTrangChu.Controls.Add(this.pnMain);
+            this.tabTrangChu.Controls.Add(this.pnDienThoai);
             this.tabTrangChu.Controls.Add(this.panel1);
             this.tabTrangChu.Location = new System.Drawing.Point(4, 22);
             this.tabTrangChu.Name = "tabTrangChu";
@@ -67,14 +67,14 @@ namespace QLCuaHangDienThoai
             this.tabTrangChu.Text = "Trang Chủ";
             this.tabTrangChu.UseVisualStyleBackColor = true;
             // 
-            // pnMain
+            // pnDienThoai
             // 
-            this.pnMain.AutoScroll = true;
-            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMain.Location = new System.Drawing.Point(3, 64);
-            this.pnMain.Name = "pnMain";
-            this.pnMain.Size = new System.Drawing.Size(786, 357);
-            this.pnMain.TabIndex = 1;
+            this.pnDienThoai.AutoScroll = true;
+            this.pnDienThoai.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnDienThoai.Location = new System.Drawing.Point(3, 64);
+            this.pnDienThoai.Name = "pnDienThoai";
+            this.pnDienThoai.Size = new System.Drawing.Size(786, 357);
+            this.pnDienThoai.TabIndex = 1;
             // 
             // panel1
             // 
@@ -193,7 +193,7 @@ namespace QLCuaHangDienThoai
 
         private System.Windows.Forms.TabControl tabControlTrangChu;
         private System.Windows.Forms.TabPage tabTrangChu;
-        private System.Windows.Forms.Panel pnMain;
+        private System.Windows.Forms.Panel pnDienThoai;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTimKiem;

@@ -139,8 +139,8 @@ namespace QLCuaHangDienThoai.GUI
             this.panel7 = new System.Windows.Forms.Panel();
             this.dgvLoaiDienThoai = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.lbDangXuat = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.tabAdmin.SuspendLayout();
             this.tabQLTaiKhoan.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -1281,6 +1281,19 @@ namespace QLCuaHangDienThoai.GUI
             this.panel3.Size = new System.Drawing.Size(800, 26);
             this.panel3.TabIndex = 3;
             // 
+            // lbDangXuat
+            // 
+            this.lbDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDangXuat.AutoSize = true;
+            this.lbDangXuat.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbDangXuat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbDangXuat.Location = new System.Drawing.Point(731, 9);
+            this.lbDangXuat.Name = "lbDangXuat";
+            this.lbDangXuat.Size = new System.Drawing.Size(56, 13);
+            this.lbDangXuat.TabIndex = 2;
+            this.lbDangXuat.Text = "Đăng xuất";
+            this.lbDangXuat.Click += new System.EventHandler(this.lbDangXuat_Click);
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.tabAdmin);
@@ -1289,18 +1302,6 @@ namespace QLCuaHangDienThoai.GUI
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(800, 424);
             this.panel4.TabIndex = 4;
-            // 
-            // lbDangXuat
-            // 
-            this.lbDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbDangXuat.AutoSize = true;
-            this.lbDangXuat.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbDangXuat.Location = new System.Drawing.Point(731, 9);
-            this.lbDangXuat.Name = "lbDangXuat";
-            this.lbDangXuat.Size = new System.Drawing.Size(56, 13);
-            this.lbDangXuat.TabIndex = 2;
-            this.lbDangXuat.Text = "Đăng xuất";
-            this.lbDangXuat.Click += new System.EventHandler(this.lbDangXuat_Click);
             // 
             // Admin
             // 

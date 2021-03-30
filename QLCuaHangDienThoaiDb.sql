@@ -49,19 +49,13 @@ CREATE TABLE GioHang(
 )
 GO
 
-CREATE TABLE HoaDon(
+CREATE TABLE DatHang(
 	Id int PRIMARY KEY identity(1, 1),
 	TaiKhoan varchar(50) REFERENCES TaiKhoan(TenTaiKhoan),
+	IdDienThoai int REFERENCES DienThoai(Id),
 	TrangThai int check(TrangThai >= 1 and TrangThai <= 3), --['Chưa thanh toán', 'Đã thanh toán', 'Đã huỷ']
 	NgayTao date,
 	TongTien int
-)
-GO
-
-CREATE TABLE ChiTietHoaDon(
-	Id int PRIMARY KEY identity(1, 1),
-	IdHoaDon int REFERENCES HoaDon(Id),
-	IdDienThoai int REFERENCES DienThoai(Id),
 )
 GO
 
@@ -70,27 +64,51 @@ GO
 Create trigger deleteTaiKhoan on TaiKhoan instead of delete
 as
 begin
-	declare @Id varchar(50)
-	select @Id=TenTaiKhoan from deleted
+	declare @TaiKhoan varchar(50)
+	select @TaiKhoan=TenTaiKhoan from deleted
 
 
-	Delete from HoaDon where TaiKhoan=@Id
-	Delete from GioHang where TaiKhoan=@Id
-	Delete from TaiKhoan where TenTaiKhoan=@Id
+	Delete from HoaDon where TaiKhoan=@TaiKhoan
+	Delete from GioHang where TaiKhoan=@TaiKhoan
+	Delete from TaiKhoan where TenTaiKhoan=@TaiKhoan
 end
 GO
 
 Create trigger deleteLoaiDienThoai on LoaiDienThoai instead of delete
 as
 begin
-	declare @Id int
-	select @Id=Id from deleted
+	declare @IdLoaiDienThoai int
+	select @IdLoaiDienThoai=Id from deleted
 
 
-	Delete from DienThoai where IdLoaiDienThoai=@Id
-	Delete from LoaiDienThoai where Id=@Id
+	Delete from DienThoai where IdLoaiDienThoai=@IdLoaiDienThoai
+	Delete from LoaiDienThoai where Id=@IdLoaiDienThoai
 end
 GO
+
+Create trigger deleteDienThoai on DienThoai instead of delete
+as
+begin
+	declare @IdDienThoai int
+	select @IdDienThoai=Id from deleted
+
+
+	Delete from GioHang where IdDienThoai=@IdDienThoai
+	Delete from DatHang where IdDienThoai=@IdDienThoai
+	Delete from DienThoai where Id=@IdDienThoai
+end
+GO
+
+Create trigger insertDatHang on DatHang for insert
+as
+begin
+	declare @IdDienThoai int
+	select @IdDienThoai=IdDienThoai from inserted
+
+	Delete from GioHang where IdDienThoai=@IdDienThoai
+end
+GO
+
 
 
 -- Creating procedures
