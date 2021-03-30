@@ -446,6 +446,7 @@ namespace QLCuaHangDienThoai
 
                 // Cập nhật lai dữ liệu Giỏ Hàng
                 loadGioHang();
+                loadLichSuDatHang();
                 MessageBox.Show("Đặt hàng thành công");
             }
             else
